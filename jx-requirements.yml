@@ -1,39 +1,85 @@
 autoUpdate:
   enabled: false
   schedule: ""
+bootConfigURL: https://github.com/cloudbees/cloudbees-jenkins-x-boot-config.git
 cluster:
-  clusterName: ""
-  environmentGitOwner: ""
-  environmentGitPublic: true
-  project: ""
   azure: {}
+  clusterName: cbjxdcluster
+  devEnvApprovers:
+  - kkyb123
+  environmentGitOwner: kouokamyohane
+  environmentGitPublic: true
+  gitKind: github
+  gitName: github
+  gitServer: https://github.com
+  namespace: jx
+  project: cbjxd-test
   provider: gke
-  zone: ""
-gitops: true
+  registry: gcr.io
+  zone: europe-west2-a
 environments:
-  - key: dev
-  - key: staging
-  - key: production
+- ingress:
+    cloud_dns_secret_name: external-dns-gcp-sa
+    domain: lmnr.dev
+    externalDNS: true
+    namespaceSubDomain: -jx.
+    tls:
+      email: ykouokam@luminara.io
+      enabled: true
+      production: true
+  key: dev
+  repository: environment-cbjxdcluster-dev
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: staging
+  repository: environment-cbjxdcluster-staging
+- ingress:
+    domain: ""
+    externalDNS: false
+    namespaceSubDomain: ""
+    tls:
+      email: ""
+      enabled: false
+      production: false
+  key: production
+  repository: environment-cbjxdcluster-production
+gitops: true
 ingress:
-  domain: ""
-  externalDNS: false
+  cloud_dns_secret_name: external-dns-gcp-sa
+  domain: lmnr.dev
+  externalDNS: true
+  namespaceSubDomain: -jx.
   tls:
-    email: ""
-    enabled: false
-    production: false
+    email: ykouokam@luminara.io
+    enabled: true
+    production: true
 kaniko: true
+repository: nexus
 secretStorage: vault
 storage:
+  backup:
+    enabled: false
+    url: ""
   logs:
     enabled: true
-    url: ""
+    url: gs://cbjxdcluster-logs-d45146b2-3f4f-42fb-8cbb-11cdceeb8285
   reports:
     enabled: true
-    url: ""
+    url: gs://cbjxdcluster-reports-c9e2a555-90f3-401d-a540-2ef86649e7
   repository:
     enabled: true
-    url: ""
+    url: gs://cbjxdcluster-repository-50e9af73-cfaf-4954-b794-abd5e8e
+vault: {}
+velero:
+  schedule: ""
+  ttl: ""
 versionStream:
-  ref: 2.1.13+cjxd.9
+  ref: v0.0.31
   url: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git
 webhook: prow

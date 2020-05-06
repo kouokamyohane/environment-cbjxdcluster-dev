@@ -1,1 +1,23 @@
-# This jx auth configmap will be generated from template
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jx-auth-config
+  labels:
+    jenkins.io/created-by: jx
+    jenkins.io/config-type: auth
+data:
+  gitAuth.yaml: |
+    currentserver: "https://github.com"
+    defaultusername: "kouokamyohane-bot"
+    pipelineserver: "https://github.com"
+    pipelineusername: "kouokamyohane-bot"
+    servers:
+    - currentuser: "kouokamyohane-bot"
+      kind: "github"
+      name: "github"
+      url: "https://github.com"
+      users:
+      - apitoken: "vault:cbjxdcluster/pipelineUser:token"
+        bearertoken: ""
+        username: "kouokamyohane-bot"

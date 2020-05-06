@@ -1,0 +1,10 @@
+adminUser:
+  password: vault:cbjxdcluster/adminUser:password
+  username: admin
+enableDocker: false
+pipelineUser:
+  email: kouokamyohane@gmail.com
+  token: vault:cbjxdcluster/pipelineUser:token
+  username: kouokamyohane-bot
+prow:
+  hmacToken: vault:cbjxdcluster/prow:hmacToken
