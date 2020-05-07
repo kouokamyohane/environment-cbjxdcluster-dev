@@ -21,3 +21,6 @@ dependencies:
 - name: jx-app-ui
   repository: http://chartmuseum.jenkins-x.io
   version: 0.1.49
+- name: sonarqube
+  repository: https://oteemo.github.io/charts
+  version: 6.1.0

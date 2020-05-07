@@ -1,0 +1,12 @@
+ingress:
+  enabled: true
+  hosts:
+    - name: sonarqube-jx.lmnr.dev
+      path: /
+  annotations: 
+    kubernetes.io/ingress.class: nginx
+  tls:
+    - secretName: tls-lmnr-dev-p
+      hosts:
+        - sonarqube-jx.lmnr.dev        
+      

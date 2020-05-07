@@ -1,0 +1,13 @@
+apiVersion: jenkins.io/v1
+kind: App
+metadata:
+  annotations:
+    jenkins.io/chart-description: SonarQube is an open sourced code quality scanning tool
+    jenkins.io/chart-repository: https://oteemo.github.io/charts
+  creationTimestamp: null
+  labels:
+    chart: sonarqube
+    jenkins.io/app-name: sonarqube
+    jenkins.io/app-version: 6.1.0
+  name: sonarqube
+spec: {}
